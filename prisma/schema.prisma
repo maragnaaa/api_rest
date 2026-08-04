@@ -10,7 +10,7 @@ datasource db {
 
 model products {
   id    String @id @default(auto()) @map("_id") @db.ObjectId
-  code  Int
+  code  Int @unique
   name  String
   price Float
 }
