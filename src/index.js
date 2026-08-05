@@ -1,6 +1,7 @@
 import express from "express";
 
 import usersRoutes from "./routes/usersRoutes.js"
+import productsRoutes from "./routes/productsRoutes.js";
 import errorHandler from "./middlewares/errorHandler.js"
 import notFound from "./utils/notFound.js";
 
@@ -13,6 +14,7 @@ app.get('/', (req, res) => {
 });
 
 app.use("/users", usersRoutes);
+app.use("/products", productsRoutes);
 
 app.use(notFound);
 

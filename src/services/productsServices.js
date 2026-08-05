@@ -36,7 +36,7 @@ async function createProduct({ code, name, price}) {
         throw new AppError("Product already registred", 409);
     }
 
-    return newProduct = await productsModel.create({ code, name, price});
+    return productsModel.create({ code, name, price});
 }
 
 async function updateProduct(code, data) {

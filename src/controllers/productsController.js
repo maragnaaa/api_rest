@@ -31,8 +31,8 @@ async function showByName(req, res, next) {
 
 async function store(req, res, next) {
     try {
-        const newProduct = await productsServices.createProduct(req.body);
-        return res.status(201).json(newProduct);
+        const product = await productsServices.createProduct(req.body);
+        return res.status(201).json(product);
     } catch (error) {
         next(error);
     }
