@@ -10,8 +10,8 @@ datasource db {
 
 model products {
   id    String @id @default(auto()) @map("_id") @db.ObjectId
-  code  Int @unique
-  name  String
+  code  Int    @unique
+  name  String @unique
   price Float
 }
 
@@ -19,5 +19,5 @@ model users {
   id    String  @id @default(auto()) @map("_id") @db.ObjectId
   admin Boolean
   id_   Int     @map("id") @unique
-  name  String
+  name  String  @unique
 }
