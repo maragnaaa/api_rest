@@ -9,13 +9,23 @@ async function index(req, res, next) {
     }
 }
 
-async function show(req, res, next) {
+async function showById(req, res, next) {
     try {
        const { id_ } = req.params;
-       const user = await usersServices.getUserById(id_);
-       return res.status(200).json(user);
+       const userById = await usersServices.getUserById(id_);
+       return res.status(200).json(userById);
     } catch (error) {
         next(error)
+    }
+}
+
+async function showByName(req, res, next) {
+    try {
+        const { name } = req.params;
+        const userByName = await usersServices.getUserByName(name);
+        return res.status(200).json(userByName);
+    } catch (error) {
+        next(error);
     }
 }
 
@@ -42,7 +52,7 @@ async function update(req, res, next) {
 async function destroy(req, res, next) {
     try {
         const { id_ } = req.params;
-        const user = await usersServices.deleteUser(id_);
+        await usersServices.deleteUser(id_);
         return res.status(204).send();
     } catch (error) {
         next(error);
@@ -51,7 +61,8 @@ async function destroy(req, res, next) {
 
 const usersController = {
     index,
-    show,
+    showById,
+    showByName,
     store,
     update,
     destroy
