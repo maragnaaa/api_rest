@@ -31,6 +31,7 @@ async function createUser({ name, id_, admin }) {
     }
 
     const userExisting = await usersModel.findUserByName(name);
+
     if (userExisting) {
         throw new AppError("User already registered", 409);
     }
@@ -39,12 +40,22 @@ async function createUser({ name, id_, admin }) {
 }
 
 async function updateUser(id_, data) {
-    await getUserById(id_);
+    const userExisting = await usersModel.findUserById(id_);
+    
+    if (!userExisting) {
+        throw new AppError("User not found", 404);
+    }
+
     return usersModel.update(id_, data);
 }
 
 async function deleteUser(id_) {
-    await getUserById(id_);
+    const userExisting = await usersModel.findUserById(id_);
+    
+    if (!userExisting) {
+        throw new AppError("User not found", 404);
+    }
+
     return usersModel.remove(id_);
 }
 
