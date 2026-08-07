@@ -1,4 +1,4 @@
-import { productsServices } from "../services/productsServices.js"
+import { productsServices } from "./service.js"
 
 async function index(req, res, next) {
     try {

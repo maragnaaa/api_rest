@@ -1,4 +1,4 @@
-import { usersServices } from "../services/usersServices.js";
+import { usersServices } from "./service.js";
 
 async function index(req, res, next) {
     try {

@@ -1,5 +1,5 @@
 import { usersModel } from "../models/usersModel.js";
-import AppError from "../errors/appError.js";
+import AppError from "../../errors/appError.js";
 
 async function listUsers() {
     return usersModel.findAllUsers();

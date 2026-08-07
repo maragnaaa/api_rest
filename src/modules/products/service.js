@@ -1,5 +1,5 @@
-import { productsModel } from "../models/productsModel.js";
-import AppError from "../errors/appError.js";
+import { productsModel } from "../../models/productsModel.js";
+import AppError from "../../errors/appError.js";
 
 async function listProducts() {
     return productsModel.findAllproducts();
