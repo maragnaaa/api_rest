@@ -10,14 +10,14 @@ datasource db {
 
 model products {
   id    String @id @default(auto()) @map("_id") @db.ObjectId
-  code  Int    @unique
-  name  String @unique
+  code  Json
+  name  String
   price Float
 }
 
 model users {
-  id    String  @id @default(auto()) @map("_id") @db.ObjectId
-  admin Boolean
-  id_   Int     @map("id") @unique
-  name  String  @unique
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  admin   Boolean
+  id_code Int
+  name    String
 }

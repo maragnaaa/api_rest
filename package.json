@@ -22,8 +22,10 @@
   "homepage": "https://github.com/maragnaaa/api_rest#readme",
   "dependencies": {
     "@prisma/client": "6.19",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "pm2": "^7.0.3"
+    "pm2": "^7.0.3",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "prisma": "6.19"
