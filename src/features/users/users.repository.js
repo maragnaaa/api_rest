@@ -1,4 +1,4 @@
-import { prisma } from '../config/prisma.js'
+import { prisma } from '../../config/prisma.js'
 
 async function findAllUsers({ skip, take }) {
     return prisma.users.findMany({ skip, take });
