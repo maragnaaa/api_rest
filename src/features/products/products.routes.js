@@ -5,8 +5,7 @@ import {
     createProductSchema,
     updateProductSchema,
     productCodeParamSchema,
-    productNameParamSchema,
-    listProductsQuerySchema
+    productNameParamSchema
 }
 from "./products.schema.js";
 
@@ -14,7 +13,6 @@ const productsRoutes = Router();
 
 productsRoutes.get(
     '/', 
-    validate(listProductsQuerySchema, "query"),
     productsController.index
 );
 

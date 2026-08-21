@@ -6,7 +6,3 @@ export function toProductDTO(product) {
         id: product.id,
     }
 }
-
-export function toProductListDTO(products) {
-    return products.map(toProductDTO);
-}

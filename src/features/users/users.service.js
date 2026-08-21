@@ -1,24 +1,15 @@
 import { usersRepository } from "./users.repository.js"
-import AppError from "../../shared/appError.js";
-import { toUserDTO, toUserListDTO } from "./users.dto.js";
+import AppError from "../../shared/errors/appError.js";
+import { toUserDTO } from "./users.dto.js";
 
-async function listUsers({ page, limit }) {
-    const skip = (page - 1) * limit;
+async function listUsers() {
+    const users = await usersRepository.findAllUsers();
 
-    const [users, total] = await Promise.all([
-        usersRepository.findAllUsers({ skip, take: limit }),
-        usersRepository.count()
-    ]);
-
-    return {
-        data: toUserListDTO(users),
-        meta: {
-            page,
-            limit,
-            total,
-            totalPages: Math.ceil(total / limit),
-        }
+    if (!users) {
+        throw new AppError("Users not registered", 404);
     }
+
+    return users;
 }
 
 async function getUserById(id_code) {
@@ -41,7 +32,7 @@ async function getUserByName(name) {
     return toUserDTO(user);
 }
 
-async function createUser({ name, id_code, admin }) {
+async function createUser(data) {
     const userExisting = await usersRepository.findUserByName(data.name);
 
     if (userExisting) {
@@ -59,7 +50,7 @@ async function updateUser(id_code, data) {
         throw new AppError("User not found", 404);
     }
 
-    const updatedUser = usersRepository.update(id_code, data)
+    const updatedUser = await usersRepository.update(id_code, data)
     return toUserDTO(updatedUser);
 }
 

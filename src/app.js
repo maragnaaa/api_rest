@@ -1,7 +1,7 @@
 import express from "express";
 import routes from "./routes.js"
-import errorHandler from "./middlewares/errorHandler.js"
-import notFound from "./utils/notFound.js";
+import errorHandler from "./shared/middlewares/errorHandler.js"
+import notFound from "./shared/middlewares/notFound.js"
 
 const app = express();
 

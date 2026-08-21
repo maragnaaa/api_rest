@@ -1,11 +1,7 @@
 import { prisma } from "../../config/prisma.js";
 
-async function findAllproducts({ skip, take }) {
-    return prisma.products.findMany({ skip, take });
-}
-
-async function count() {
-    return prisma.products.count();
+async function findAllproducts() {
+    return prisma.products.findMany();
 }
 
 async function findProductByCode(code) {
@@ -30,7 +26,6 @@ async function remove(code) {
 
 const productsRepository = {
     findAllproducts,
-    count,
     findProductByCode,
     findProductByName,
     create,

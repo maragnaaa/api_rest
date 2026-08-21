@@ -6,14 +6,12 @@ import {
     updateUserSchema,
     userIdParamSchema,
     userNameParamSchema,
-    listUsersQuerySchema,
 } from "./users.schema.js";
 
 const usersRoutes = Router();
 
 usersRoutes.get(
     "/", 
-    validate(listUsersQuerySchema, "query"), 
     usersController.index
 );
 

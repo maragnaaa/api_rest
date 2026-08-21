@@ -1,11 +1,18 @@
 export function validate(schema, source = "body") {
     return (req, res, next) => {
-        const result = schema.safeParse(req.body);
+        const result = schema.safeParse(req[source]);
 
-        if (!result.sucess) {
-            return res.status(400).json({ error: result.error.flatten().fieldErrors });
+        if (!result.success) {
+            return res.status(400).json({ error: result.error.flatten() });
         }
-        req[source] = result.data;
+
+        if (source !== "query") {
+            req[source] = result.data;
+        } 
+
+        req.valid = req.valid || {};
+        req.valid[source] = result.data;
+
         next();
     };
 }

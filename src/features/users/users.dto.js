@@ -6,7 +6,3 @@ export function toUserDTO(user) {
         id_code: user.id_code,
     };
 }
-
-export function toUserListDTO(users) {
-    return users.map(toUserDTO);
-}

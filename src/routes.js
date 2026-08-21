@@ -5,6 +5,6 @@ import productsRoutes from "./features/products/products.routes.js"
 const router = Router();
 
 router.use("/users", usersRoutes);
-router.use("/users", productsRoutes);
+router.use("/products", productsRoutes);
 
 export default router 

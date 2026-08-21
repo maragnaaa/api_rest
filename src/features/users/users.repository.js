@@ -1,7 +1,7 @@
 import { prisma } from '../../config/prisma.js'
 
-async function findAllUsers({ skip, take }) {
-    return prisma.users.findMany({ skip, take });
+async function findAllUsers() {
+    return prisma.users.findMany();
 }
 
 async function count() {

@@ -1,4 +1,4 @@
-import { env } from "../../config/"
+import { env } from "../../config/env.js"
 
 function errorHandler(err, req, res, next) {
     console.error(err);

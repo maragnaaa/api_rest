@@ -1,24 +1,15 @@
 import { productsRepository } from "./products.repository.js";
-import { toProductDTO, toProductListDTO } from "./products.dto.js";
+import { toProductDTO } from "./products.dto.js";
 import AppError from "../../shared/errors/appError.js";
 
-async function listProducts({ page, limits }) {
-    const skip = (page - 1) * limit;
+async function listProducts() {
+    const products = await productsRepository.findAllproducts();
 
-    const [products, total] = await Promise.all([
-        productsRepository.findAllproducts({ skip, take: limit }),
-        productsRepository.count(),
-    ]);
-
-    return {
-        data: toProductListDTO(products),
-        meta: {
-            page,
-            limit,
-            total,
-            totalPages: Math.ceil(total / limit),
-        }
+    if (!products) {
+        throw new AppError("No products registered", 404);
     }
+
+    return products;
 }
 
 async function getProductByCode(code) {
@@ -48,7 +39,7 @@ async function createProduct(data) {
         throw new AppError("Product already registred", 409);
     }
 
-    const product = productsRepository.create(data);
+    const product = await productsRepository.create(data);
     return toProductDTO(product);
 }
 
@@ -59,7 +50,7 @@ async function updateProduct(code, data) {
         throw new AppError("Product not found", 404);
     }
     
-    const updatedProduct = productsRepository.update(code, data);
+    const updatedProduct = await productsRepository.update(code, data);
     return toProductDTO(updatedProduct);
 }
 
