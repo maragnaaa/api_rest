@@ -1,7 +1,7 @@
 import { productsServices } from "./products.service.js";
 import { asyncHandler } from "../../shared/utils/asyncHandler.js";
 
-const index = asyncHandler(async (req, res) => {
+const index = asyncHandler(async (_, res) => {
     const result = await productsServices.listProducts();
     res.status(200).json(result);
 });

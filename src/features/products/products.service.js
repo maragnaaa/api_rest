@@ -9,7 +9,7 @@ async function listProducts() {
         throw new AppError("No products registered", 404);
     }
 
-    return products;
+    return products.map(toProductDTO);
 }
 
 async function getProductByCode(code) {

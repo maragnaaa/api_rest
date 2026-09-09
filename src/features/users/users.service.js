@@ -5,11 +5,11 @@ import { toUserDTO } from "./users.dto.js";
 async function listUsers() {
     const users = await usersRepository.findAllUsers();
 
-    if (!users) {
+    if (!users || users.length === 0) {
         throw new AppError("Users not registered", 404);
     }
 
-    return users;
+    return users.map(toUserDTO);
 }
 
 async function getUserById(id_code) {

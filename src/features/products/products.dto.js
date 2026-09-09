@@ -3,6 +3,5 @@ export function toProductDTO(product) {
         code: product.code,
         name: product.name,
         price: product.price,
-        id: product.id,
     }
 }
