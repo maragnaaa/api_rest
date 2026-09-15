@@ -4,8 +4,8 @@ import { userDTO } from './users.dto.ts';
 import { AppError } from '../../shared/errors/appError.ts';
 
 export const usersServices = {
-  async createUser(data: CreateUserInput, id_code: number) {
-    const exists = await usersRepository.findUserById(id_code);
+  async createUser(data: CreateUserInput) {
+    const exists = await usersRepository.findUserByName(data.name);
 
     if (exists) {
       throw new AppError('User already registered', 409);
