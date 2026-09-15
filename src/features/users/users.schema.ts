@@ -21,3 +21,8 @@ export const nameUserParamSchema = z.object({
     .nonempty()
     .regex(/^[a-z]+$/),
 });
+
+export type createUserSchema = z.infer<typeof createUserSchema>;
+export type updateUserSchema = z.infer<typeof updateUserSchema>;
+export type idUserParamSchema = z.infer<typeof idUserParamSchema>;
+export type nameUserParamSchema = z.infer<typeof nameUserParamSchema>;
