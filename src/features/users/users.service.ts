@@ -25,7 +25,7 @@ export const usersServices = {
     return users.map(userDTO);
   },
 
-  async getUsersbyName(name: string) {
+  async getUserByName(name: string) {
     const user = await usersRepository.findUserByName(name);
 
     if (!user) {

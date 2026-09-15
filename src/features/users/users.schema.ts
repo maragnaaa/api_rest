@@ -24,3 +24,5 @@ export const nameUserParamSchema = z.object({
 
 export type CreateUserInput = z.infer<typeof createUserSchema>;
 export type UpdateUserInput = z.infer<typeof updateUserSchema>;
+export type NameUserInput = z.infer<typeof nameUserParamSchema>;
+export type IdUserInput = z.infer<typeof idUserParamSchema>;
