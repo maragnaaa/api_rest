@@ -20,3 +20,4 @@ model users {
   admin   Boolean
   id_code BigInt @unique
   name    String @unique
+}
