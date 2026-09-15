@@ -22,7 +22,7 @@ export const nameUserParamSchema = z.object({
     .regex(/^[a-z]+$/),
 });
 
-export type createUserSchema = z.infer<typeof createUserSchema>;
-export type updateUserSchema = z.infer<typeof updateUserSchema>;
-export type idUserParamSchema = z.infer<typeof idUserParamSchema>;
-export type nameUserParamSchema = z.infer<typeof nameUserParamSchema>;
+export type createUserInput = z.infer<typeof createUserSchema>;
+export type updateUserInput = z.infer<typeof updateUserSchema>;
+export type idUserParamInput = z.infer<typeof idUserParamSchema>;
+export type nameUserParamInput = z.infer<typeof nameUserParamSchema>;
