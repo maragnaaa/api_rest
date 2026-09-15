@@ -8,7 +8,7 @@ export function errorHandler(_req: Request, res: Response, err: Error, _next: Ne
   }
 
   if (err instanceof ZodError) {
-    return res.status(400).json({ error: err.flatten });
+    return res.status(400).json({ error: err.issues });
   }
 
   console.log(err);
