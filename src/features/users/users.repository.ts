@@ -1,7 +1,7 @@
 import { prisma } from '../../config/prisma.ts';
 import type { CreateUserInput, UpdateUserInput } from './users.schema.ts';
 
-export const UsersRepository = {
+export const usersRepository = {
   async create(data: CreateUserInput) {
     return prisma.users.create({ data });
   },
