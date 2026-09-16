@@ -2,7 +2,7 @@ import type { Request, Response, NextFunction } from 'express';
 import { AppError } from '../errors/appError.ts';
 import { ZodError } from 'zod';
 
-export function errorHandler(_req: Request, res: Response, err: Error, _next: NextFunction) {
+export function errorHandler(err: Error, _req: Request, res: Response, _next: NextFunction) {
   if (err instanceof AppError) {
     return res.status(err.statusCode).json({ error: err.message });
   }
