@@ -4,6 +4,7 @@ import { ZodObject } from 'zod';
 export const validate =
   (schema: ZodObject, source: 'body' | 'params' | 'query' = 'body') =>
   (req: Request, _res: Response, next: NextFunction) => {
-    req[source] = schema.parse(req[source]);
+    req.valid = req.valid || {};
+    req.valid[source] = schema.parse(req[source]);
     next();
   };

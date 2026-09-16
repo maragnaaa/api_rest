@@ -18,6 +18,6 @@ model products {
 model users {
   id      String  @id @default(auto()) @map("_id") @db.ObjectId
   admin   Boolean
-  id_code BigInt @unique
+  id_code Int @unique
   name    String @unique
 }

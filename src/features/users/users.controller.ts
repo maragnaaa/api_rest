@@ -13,7 +13,7 @@ export const usersController = {
     res.status(201).json(newUser);
   },
 
-  async listAll(res: Response) {
+  async listAll(_req: Request, res: Response) {
     const listUsers = await usersServices.listAllUsers();
     res.status(200).json(listUsers);
   },
@@ -40,6 +40,6 @@ export const usersController = {
   async destroy(req: Request, res: Response) {
     const { id_code } = req.valid?.params as IdUserInput;
     await usersServices.deleteUser(id_code);
-    res.status(204).json({ success: 'User successfully deleted' });
+    res.status(200).json({ success: 'User successfully deleted' });
   },
 };

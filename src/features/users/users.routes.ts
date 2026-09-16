@@ -18,26 +18,25 @@ usersRoutes.post(
 );
 usersRoutes.get('/users', usersController.listAll);
 usersRoutes.get(
-  '/users/:name',
+  '/users/name/:name',
   validate(nameUserParamSchema, 'params'),
   asyncHandler(usersController.showByName),
 );
 usersRoutes.get(
-  '/users/:id_code',
+  '/users/id/:id_code',
   validate(idUserParamSchema, 'params'),
   asyncHandler(usersController.showById),
 );
 usersRoutes.put(
-  '/users/:id_code',
+  '/users/id/:id_code',
   validate(updateUserSchema, 'body'),
   validate(idUserParamSchema, 'params'),
   asyncHandler(usersController.update),
   asyncHandler(usersController.showById),
 );
 usersRoutes.delete(
-  '/users/:id_code',
+  '/users/id/:id_code',
   validate(idUserParamSchema, 'params'),
-  asyncHandler(usersController.showById),
   asyncHandler(usersController.destroy),
 );
 

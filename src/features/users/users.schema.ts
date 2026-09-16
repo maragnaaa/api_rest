@@ -4,7 +4,7 @@ export const createUserSchema = z.object({
   name: z
     .string()
     .nonempty()
-    .regex(/^[a-z]+$/),
+    .regex(/^[a-zA-ZÀ-ÿ ]+$/),
   admin: z.boolean().default(false).nonoptional(),
   id_code: z.coerce.number().positive().nonoptional(),
 });
@@ -19,7 +19,7 @@ export const nameUserParamSchema = z.object({
   name: z
     .string()
     .nonempty()
-    .regex(/^[a-z]+$/),
+    .regex(/^[a-zA-ZÀ-ÿ ]+$/),
 });
 
 export type CreateUserInput = z.infer<typeof createUserSchema>;
