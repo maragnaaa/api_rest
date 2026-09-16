@@ -5,7 +5,7 @@ export const createProductsSchema = z.object({
   name: z
     .string()
     .nonempty()
-    .regex(/^[\p{L} ]+$/u),
+    .regex(/^[a-zA-B0-9a-zA-ZÀ-ÿ\s]+$/),
   price: z.float32().positive().nonoptional(),
 });
 
@@ -15,11 +15,11 @@ export const nameProductParamSchema = z.object({
   name: z
     .string()
     .nonempty()
-    .regex(/^[\p{L} ]+$/u),
+    .regex(/^[a-zA-B0-9a-zA-ZÀ-ÿ\s]+$/),
 });
 
 export const codeProductParamSchema = z.object({
-  code: z.number().positive().nonoptional(),
+  code: z.coerce.number().positive().nonoptional(),
 });
 
 export type CreateProductInput = z.infer<typeof createProductsSchema>;

@@ -8,7 +8,6 @@ import {
   nameProductParamSchema,
   codeProductParamSchema,
 } from './products.schema.ts';
-import { idUserParamSchema } from '../users/users.schema.ts';
 
 const productsRoutes = Router();
 
@@ -19,24 +18,24 @@ productsRoutes.post(
 );
 productsRoutes.get('/products', asyncHandler(productsController.listAllProducts));
 productsRoutes.get(
-  '/products/:name',
+  '/products/name/:name',
   validate(nameProductParamSchema, 'params'),
   asyncHandler(productsController.showByName),
 );
 productsRoutes.get(
-  '/products/:id',
-  validate(idUserParamSchema, 'params'),
+  '/products/code/:code',
+  validate(codeProductParamSchema, 'params'),
   asyncHandler(productsController.showByCode),
 );
 productsRoutes.put(
-  '/products/:id',
+  '/products/code/:code',
   validate(updateProductSchema, 'body'),
   validate(codeProductParamSchema, 'params'),
   asyncHandler(productsController.update),
 );
 productsRoutes.delete(
-  '/products/:id',
-  validate(idUserParamSchema, 'params'),
+  '/products/code/:code',
+  validate(codeProductParamSchema, 'params'),
   asyncHandler(productsController.destroy),
 );
 
