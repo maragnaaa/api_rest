@@ -1,0 +1,28 @@
+import { z } from 'zod';
+
+export const createUserSchema = z.object({
+  name: z
+    .string()
+    .nonempty()
+    .regex(/^[a-zA-ZÀ-ÿ ]+$/),
+  admin: z.boolean().default(false).nonoptional(),
+  id_code: z.coerce.number().positive().nonoptional(),
+});
+
+export const updateUserSchema = createUserSchema.partial();
+
+export const idUserParamSchema = z.object({
+  id_code: z.coerce.number().positive().nonoptional(),
+});
+
+export const nameUserParamSchema = z.object({
+  name: z
+    .string()
+    .nonempty()
+    .regex(/^[a-zA-ZÀ-ÿ ]+$/),
+});
+
+export type CreateUserInput = z.infer<typeof createUserSchema>;
+export type UpdateUserInput = z.infer<typeof updateUserSchema>;
+export type NameUserInput = z.infer<typeof nameUserParamSchema>;
+export type IdUserInput = z.infer<typeof idUserParamSchema>;
