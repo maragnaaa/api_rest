@@ -10,34 +10,34 @@ import {
 } from './products.schema.ts';
 import { idUserParamSchema } from '../users/users.schema.ts';
 
-const router = Router();
+const productsRoutes = Router();
 
-router.post(
+productsRoutes.post(
   '/products',
   validate(createProductsSchema, 'body'),
   asyncHandler(productsController.register),
 );
-router.get('/products', asyncHandler(productsController.listAllProducts));
-router.get(
+productsRoutes.get('/products', asyncHandler(productsController.listAllProducts));
+productsRoutes.get(
   '/products/:name',
   validate(nameProductParamSchema, 'params'),
   asyncHandler(productsController.showByName),
 );
-router.get(
+productsRoutes.get(
   '/products/:id',
   validate(idUserParamSchema, 'params'),
   asyncHandler(productsController.showByCode),
 );
-router.put(
+productsRoutes.put(
   '/products/:id',
   validate(updateProductSchema, 'body'),
   validate(codeProductParamSchema, 'params'),
   asyncHandler(productsController.update),
 );
-router.delete(
+productsRoutes.delete(
   '/products/:id',
   validate(idUserParamSchema, 'params'),
   asyncHandler(productsController.destroy),
 );
 
-export { router };
+export { productsRoutes };

@@ -1,5 +1,6 @@
 import express from 'express';
 import { usersRoutes } from './features/users/users.routes.ts';
+import { productsRoutes } from './features/products/products.routes.ts';
 import { errorHandler } from './shared/middlewares/errorHandler.ts';
 import { notFound } from './shared/middlewares/notFound.ts';
 import type { Response } from 'express';
@@ -13,6 +14,7 @@ app.get('/health', (res: Response) => {
 });
 
 app.use(usersRoutes);
+app.use(productsRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
