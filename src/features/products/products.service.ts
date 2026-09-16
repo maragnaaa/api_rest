@@ -4,8 +4,8 @@ import { productsDTO } from './products.dto.ts';
 import type { CreateProductInput, UpdateProductInput } from './products.schema.ts';
 
 export const productsServices = {
-  async createProduct(data: CreateProductInput, code: number) {
-    const productExists = await productsRepository.findProductsByCode(code);
+  async createProduct(data: CreateProductInput) {
+    const productExists = await productsRepository.findProductsByCode(data.code);
 
     if (productExists) {
       throw new AppError('Product already registered', 409);

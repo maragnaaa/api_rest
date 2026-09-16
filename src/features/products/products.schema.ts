@@ -11,14 +11,14 @@ export const createProductsSchema = z.object({
 
 export const updateProductSchema = createProductsSchema.partial();
 
-export const codeProductParamSchema = z.object({
+export const nameProductParamSchema = z.object({
   name: z
     .string()
     .nonempty()
     .regex(/^[\p{L} ]+$/u),
 });
 
-export const nameProductParamSchema = z.object({
+export const codeProductParamSchema = z.object({
   code: z.number().positive().nonoptional(),
 });
 
